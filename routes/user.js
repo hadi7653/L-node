@@ -1,35 +1,30 @@
+const { response } = require('express');
 var express = require('express');
 var router = express.Router();
+const productHelpers = require('../helpers/product-helpers');
+var userHelpers = require('../helpers/user-helpers')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const products = [
-    {
-      name:"Ipone 11pro",
-      catagary:"mobile",
-      description : "devolped by apple",
-      image :"https://www.did.ie/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/w/mwhk2ba_3.jpg"
-    },
-    {
-      name:"RedMe note 7pro",
-      catagary:"mobile",
-      description : "devolped by xiomi",
-      image :"https://th.bing.com/th/id/OIP.OlcS6TWaH6A-WLEZreuEyAHaHH?pid=ImgDet&rs=1"
-    },
-    {
-      name:"node 8pro",
-      catagary:"mobile",
-      description : "devolped by oneplus",
-      image :"https://www.pakmobizone.pk/wp-content/uploads/2019/10/xiaomi-Redmi-8-2.jpg"
-    },
-    {
-      name:"samsung note 8",
-      catagary:"mobile",
-      description : "devolped by samsung",
-      image :"https://th.bing.com/th/id/OIP.QSL3JetD9b9FO-T_3H8_oAHaHm?pid=ImgDet&rs=1"
-    },
-  ]
-  res.render('index', { products });
+
+  productHelpers.getAllProducts().then((products)=>{
+    // console.log(products);
+    res.render('user/view-products', { products})
+
+  })
 });
+router.get('/login', (req,res)=>{
+  res.render('user/login')
+})
+
+router.get('/signup',(req,res)=>{
+  res.render('user/signup')
+})
+
+router.post('/signup',(req,res)=>{
+  userHelpers.doSignup(req.body).then((response)=>{
+    console.log(response);
+  })
+})
 
 module.exports = router;
