@@ -9,16 +9,17 @@ module.exports={
 
         db.get().collection('product').insertOne(product).then((data)=>{
             // console.log("data");
-            // console.log(data.insertedId);            
-            callback(data.insertedId.toString())
+            // console.log(callback);   
+            // console.log(data);         
+            callback(data)
         }).catch((err)=>{
             // console.log("this is error");
             // console.log(err);
         })
     },
      getAllProducts:()=>{
-        return new Promise((resolve,reject)=>{
-            let products=  db.get().collection(collection.PRODUCT_COLLECTION).find().toArray()
+        return new Promise(async(resolve,reject)=>{
+            let products= await db.get().collection(collection.PRODUCT_COLLECTION).find().toArray()
             resolve(products)
         })
     }

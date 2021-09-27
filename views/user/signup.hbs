@@ -1,0 +1,30 @@
+<section>
+  <style>
+    .login-form{ display: flex; flex-direction: column; margin-left: 5rem;
+    text-decoration: none; } .username{ color: red; text-align: left;
+    margin-left: 2rem; margin-top: 2rem; } input{ width: 21rem; } .check{
+    display: flex; margin-top: 2rem; } .rember{ color: rgb(109, 109, 104); }
+    input[type=checkbox]{ width: 2rem; } button{ width:fit-content; margin-top:
+    2rem; } .sign{ margin-top: 5rem; }
+
+  </style>
+  <h1 style="text-align:center"> Create New Account </h1>
+
+  <form action="/signup" method="POST">
+    <div class="login-form" method="POST">
+      <span class="username">username</span>
+      <input type="text" placeholder="Enter Name" />
+      <span class="username">email</span>
+      <input type="text" placeholder="Enter email" />
+
+      <span class="username">new password</span>
+      <input type="text" placeholder="Enter email" />
+
+      <button type="submit">sign up</button>
+      <div class="sign">
+
+        <span><a href="/login">already have an account</a></span>
+      </div>
+    </div>
+  </form>
+</section>
